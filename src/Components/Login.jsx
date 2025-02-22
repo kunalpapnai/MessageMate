@@ -7,7 +7,6 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useAuth } from './AuthContext';
 
 async function createUser(authData){
     const userObject = authData.user;
@@ -23,15 +22,6 @@ async function createUser(authData){
 }
 
 function Login() {
-  //use karte ho
-  const {userData, setUserData} = useAuth();
-
-  const navigate = useNavigate();
-
-  if(userData != null){
-    navigate("/");
-    return <></>;
-  }
 
   const handleLogin = async () => {
       // login wala logic
@@ -40,17 +30,6 @@ function Login() {
       console.log("result", userData);
 
       await createUser(userData);
-      const userObject = userData.user;
-      const {uid, photoURL, displayName, email} = userObject;
-      //context me jaake save kr dia hai user ka data
-      setUserData({
-        id: uid,
-        profile_pic: photoURL,
-        email: email,
-        name: displayName
-      });
-
-      navigate("/");
   }
 
   return (
