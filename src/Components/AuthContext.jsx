@@ -17,7 +17,7 @@ function AuthWrapper({children}) {
     useEffect(() => {
       // check kr rahe ho if you have logged in before
       // kuch bhi change -> yha update ho jaayega 
-      onAuthStateChanged(auth, async (currentUser) => {
+      const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
         setLoading(true);
           if (currentUser) {
               const docRef = doc(db, "users", currentUser?.uid);
@@ -36,6 +36,9 @@ function AuthWrapper({children}) {
           }
           setLoading(false);
       })
+      return () => {
+        unsubscribe()
+      }
   }, [])
 
   console.log("userData", userData);
