@@ -23,13 +23,13 @@ function AuthWrapper({children}) {
               const docRef = doc(db, "users", currentUser?.uid);
               const docSnap = await getDoc(docRef);
               if (docSnap.exists()) {
-                  const { uid, photoURL, displayName, email } = docSnap.data();
+                  const {profile_pic, name, email } = docSnap.data();
                   // context me jaake save kr dia hai user ka data
                   setUserData({
-                      id: uid,
-                      profile_pic: photoURL,
+                      id: currentUser.uid,
+                      profile_pic,
                       email,
-                      name: displayName
+                      name
                   });
                   console.log("userData Added");
               }

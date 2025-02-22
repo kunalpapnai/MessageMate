@@ -36,7 +36,7 @@ function ChatPanel() {
   return (
     <div className="bg-white w-[30vw]">
       {/* top-bar */}
-      <div className="bg-gray-400 py-2 px-4 border-r  flex justify-between items-center gap-2">
+      <div className="bg-background py-2 px-4 border-r  flex justify-between items-center gap-2">
           <button onClick={() => { setShowProfile(true) }}>
               <img src={"/default-user.png"} alt="profile picture" className="w-10 h-10 rounded-full object-cover"/>
           </button>

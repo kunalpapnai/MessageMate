@@ -44,7 +44,7 @@ function Home() {
 
       {/* <input type="file" accept="image/png image/jpeg image/webp" onChange={handleChange}/> */}
 
-      <div className="bg-[#eff2f5] w-full h-full shadow-md flex">
+      <div className="bg-background w-full h-full shadow-md flex">
       {/* conditionals rehne wale hai */}
 
       <ChatPanel></ChatPanel>
