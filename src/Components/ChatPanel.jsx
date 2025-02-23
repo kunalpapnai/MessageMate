@@ -4,6 +4,7 @@ import { db } from '../../firebase';
 import { CircleFadingPlusIcon, MessageSquare, UserRoundIcon } from 'lucide-react';
 import Profile from './Profile';
 import UserCard from './UserCard';
+import { useAuth } from './AuthContext';
 
 function ChatPanel() {
     {/* list of users lake aane hai from firebase */}
@@ -11,6 +12,7 @@ function ChatPanel() {
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [showProfile, setShowProfile] = useState(false);
+    const {userData} = useAuth();
 
     useEffect(() => {
         const getUsers = async () => {
@@ -38,7 +40,7 @@ function ChatPanel() {
       {/* top-bar */}
       <div className="bg-background py-2 px-4 border-r  flex justify-between items-center gap-2">
           <button onClick={() => { setShowProfile(true) }}>
-              <img src={"/default-user.png"} alt="profile picture" className="w-10 h-10 rounded-full object-cover"/>
+              <img src={userData?.profile_pic || "/default-user.png"} alt="profile picture" className="w-10 h-10 rounded-full object-cover"/>
           </button>
 
           <div className="flex items-end justify-center gap-6 mx-4">
