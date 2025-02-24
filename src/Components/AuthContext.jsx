@@ -54,6 +54,8 @@ function AuthWrapper({children}) {
       hour: "numeric",
       minute: "numeric",
       hour12: true,
+      day: "2-digit",
+      month: "short"
     });
 
     await updateDoc(doc(db, "users", user.uid), {
@@ -77,7 +79,7 @@ function AuthWrapper({children}) {
     //kaha aapki image upload hogi
     const storageRef = ref(storage, `profile/${userData.id}`);
     const uploadTask = uploadBytesResumable(storageRef, img);
-    
+
     uploadTask.on(
       "state_changed",
       () => {

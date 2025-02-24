@@ -17,7 +17,7 @@ function Profile(props) {
   }
 
   return (
-    <div className='bg-background w-[30vw]'>
+    <div className='bg-background w-[30vw] min-w-[350px]'>
         <div className="bg-green-400 text-white py-4 text-lg px-4 flex items-center gap-6">
           <button onClick={props.onBack}><ArrowLeft/></button>
           <div>Profile</div>

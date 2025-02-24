@@ -16,6 +16,8 @@ async function createUser(authData){
       hour: "numeric",
       minute: "numeric",
       hour12: true,
+      day: "2-digit",
+      month: "short"
     });
 
     //console.log("id : ", id, " ", photoURL, " ", name, " ", email);
