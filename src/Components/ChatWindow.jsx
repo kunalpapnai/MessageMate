@@ -99,11 +99,11 @@ function ChatWindow() {
       uploadTask.on(
         "state_changed",
         () => {
-          console.log("upload started"); 
+
         },
         (err) => {
           // on Error
-          console.log("Upload failed : ", err);
+          
           alert("Unable to Upload!");
         },
         async () => {
