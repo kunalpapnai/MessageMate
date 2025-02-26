@@ -250,7 +250,7 @@ function ChatWindow() {
         <div className="bg-background py-3 px-6 shadow flex items-center gap-6">
           <button onClick={() => {fileInputRef.current.click()}}>
             <PlusIcon />
-            <input type="file" className="hidden" ref={fileInputRef} onChange={(e) => { console.log(e);handleFile(e.target.files?.[0])}} />
+            <input type="file" className="hidden" ref={fileInputRef} onChange={(e) => {handleFile(e.target.files?.[0])}} />
           </button>
           <input type="text" className="w-full py-2 px-4 rounded focus:outline-none" 
           placeholder="Type a message..."

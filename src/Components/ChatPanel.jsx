@@ -19,10 +19,9 @@ function ChatPanel() {
         const getUsers = async () => {
           //isme collection pass karo and data milta hai
           const snapShot = await getDocs(collection(db, 'users'));
-          //console.log(data.docs.length);
+      
           const arrayOfUsers = snapShot.docs.map((docs) => { return {userData: docs.data(), id: docs.id} });
 
-          console.log("21", arrayOfUsers);
           setUsers(arrayOfUsers);
           setLoading(false);
         };

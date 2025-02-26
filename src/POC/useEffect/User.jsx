@@ -5,11 +5,11 @@ function User() {
     const [user, setUser] = useState(null);
     function cb() {
         // // logic -> data fetch -> UI update
-        // console.log("I an after render")
+
         (async function fetchUser() {
             const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
             const userData = await response.json();
-            console.log("userData", userData);
+
             setLoading(false);
             setUser(userData);
         })()

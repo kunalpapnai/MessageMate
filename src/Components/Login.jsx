@@ -20,15 +20,13 @@ async function createUser(authData){
       month: "short"
     });
 
-    //console.log("id : ", id, " ", photoURL, " ", name, " ", email);
-
     await setDoc(doc(db, "users", uid),{
       email,
       profile_pic: photoURL,
       name: displayName,
       lastSeen: timeStamp,
     })
-    //console.log("user data is added");
+
 }
 
 function Login() {
@@ -38,7 +36,7 @@ function Login() {
       // login wala logic
       // auth-step-4
       const userData = await signInWithPopup(auth, new GoogleAuthProvider);
-      console.log("result", userData);
+
 
       await createUser(userData);
       navigate("/");
