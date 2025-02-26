@@ -67,11 +67,19 @@ function AuthWrapper({children}) {
     await updateDoc(doc(db, "users", userData.id), {
       name: newName
     });
+    setUserData({
+      ...userData,
+      name: newName,
+  });
   }
 
   const updateStatus = async (newStatus) => {
     await updateDoc(doc(db, "users", userData.id), {
       status: newStatus
+    });
+    setUserData({
+      ...userData,
+      status: newStatus,
     });
   }
 

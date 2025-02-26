@@ -55,8 +55,8 @@ function Login() {
         <div className='h-[calc(100vh-220px)] bg-background flex justify-center items-center relative'>
           <div className='h-[80%] w-[50%] bg-white shadow-2xl flex flex-col gap-4 justify-center items-center absolute -top-[93px]'>
               <Fingerprint className='h-20 w-20 text-primary' strokeWidth={1}/>
-              <div>Sign In</div>
-              <div>Sign In with your Google account to get started</div>
+              <div className='text-2xl font-medium mb-2'>Sign In</div>
+              <div className='text-xs font-light text-slate-500 text-center'>Sign In with your Google account <br />to get started</div>
               <button className='flex gap-2 items-center bg-primary p-4 text-white rounded-[5px]' onClick={handleLogin}>
                 <div>
                   Sign In with Google

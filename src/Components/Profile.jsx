@@ -22,9 +22,9 @@ function Profile(props) {
           <button onClick={props.onBack}><ArrowLeft/></button>
           <div>Profile</div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-8 mt-8">
+        <div className="flex flex-col items-center justify-center gap-4 mt-4">
             <label className={`group relative cursor-pointer rounded-full overflow-hidden ${isUploading ? "pointer-events-none" : ""}`}>
-                <img src={userData.profile_pic} className="w-[160px] h-[160px] object-cover " alt='profile picture' />
+                <img src={userData?.profile_pic} className="w-[160px] h-[160px] object-cover " alt='profile picture' />
                 {isUploading ? (
                     <div className="absolute inset-0 flex items-center justify-center bg-black/10 z-10">
                         <Loader2Icon className="w-6 h-6 text-primary-dense animate-spin z-10" />
