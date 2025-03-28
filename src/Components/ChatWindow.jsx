@@ -12,6 +12,7 @@ function ChatWindow() {
     const [secondUser, setSecondUser] = useState();
     const [msgList, setMsgList] = useState([]);
     const fileInputRef = useRef(null);
+    const chatRef = useRef(null);
     const {userData} = useAuth(); 
 
     const receiverId = params?.chatid;
@@ -62,6 +63,12 @@ function ChatWindow() {
         setMsg("");
       }
     }
+
+    useEffect(() => {
+      if (chatRef.current) {
+        chatRef.current.scrollTo({ top: chatRef.current.scrollHeight, behavior: "smooth" });
+      }
+    }, [msgList]); // Scrolls when messages change
 
     useEffect(() => {
       // request , data fetch
@@ -177,7 +184,7 @@ function ChatWindow() {
             <h3>{secondUser?.name}</h3>
             {secondUser?.lastSeen && (
               <p className="text-xs text-neutral-400">
-                last seen at {secondUser?.lastSeen}
+                last seen on {secondUser?.lastSeen}
               </p>
             )}
           </div>
@@ -185,7 +192,7 @@ function ChatWindow() {
         </div>
 
         {/* message list */}
-        <div className="flex-grow flex flex-col gap-12 p-6  overflow-y-scroll ">
+        <div ref={chatRef} className="flex-grow flex flex-col gap-12 p-6  overflow-y-scroll ">
           {msgList?.map((m, index) => (
             <div
               key={index}
@@ -209,7 +216,7 @@ function ChatWindow() {
                   />
                   </a>
                   
-                ) : m.fileName.match(/\.(mp4|webm|ogg)$/i) ? (
+                ) : m.fileName.match(/\.(mp4)$/i) ? (
                   // Display Video
                   <video
                     controls
@@ -218,7 +225,7 @@ function ChatWindow() {
                     <source src={m.fileURL} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                ) : m.fileName.match(/\.(mp3|wav|ogg)$/i) ? (
+                ) : m.fileName.match(/\.(mp3)$/i) ? (
                   // Display Audio
                   <audio controls className="w-full">
                     <source src={m.fileURL} type="audio/mpeg" />
